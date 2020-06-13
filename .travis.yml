@@ -1,0 +1,9 @@
+sudo: required
+language: generic
+services:
+  - docker
+
+before_install:
+  - docker build -t pckhai/docker-react-sample -f Dockerfile.dev .
+script:
+  - docker run -e CI=true pckhai/docker-react-sample npm run test -- --coverage
